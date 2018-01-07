@@ -1,7 +1,7 @@
 mysql:
-  db: sellbytel
-  user: sellbytel
-  password: sellbytel
+  db: symfony
+  user: symfony
+  password: symfony
   privileges: '*.*:ALL'
   host: '%'
   bind:

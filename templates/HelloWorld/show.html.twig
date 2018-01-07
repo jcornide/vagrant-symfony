@@ -1,8 +1,14 @@
-<html>
+<html lang="{{ app.request.locale }}">
 <head>
-    <title>Welcome to Symfony!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Hello world!</title>
+    {% block stylesheets %}
+    {% endblock %}
 </head>
 <body>
-<h1>Hello world!</h1>
+    <h1>Hello world!</h1>
+    {% block javascripts %}
+    {% endblock %}
 </body>
 </html>
