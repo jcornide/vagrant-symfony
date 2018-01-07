@@ -1,4 +1,70 @@
 {
+    "behat/behat": {
+        "version": "v3.2.0"
+    },
+    "behat/gherkin": {
+        "version": "v4.5.1"
+    },
+    "behat/mink": {
+        "version": "v1.7.1"
+    },
+    "behat/mink-browserkit-driver": {
+        "version": "v1.3.2"
+    },
+    "behat/mink-extension": {
+        "version": "2.1.x-dev"
+    },
+    "behat/mink-goutte-driver": {
+        "version": "v1.2.1"
+    },
+    "behat/mink-selenium2-driver": {
+        "version": "v1.3.1"
+    },
+    "behat/symfony2-extension": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "6b63fb76d3bb2dd16098f12adf6d6ca844e21862"
+        }
+    },
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
+    "fabpot/goutte": {
+        "version": "v3.2.2"
+    },
+    "friends-of-behat/context-service-extension": {
+        "version": "v1.1.1"
+    },
+    "friends-of-behat/cross-container-extension": {
+        "version": "v1.0.1"
+    },
+    "friends-of-behat/performance-extension": {
+        "version": "v1.0.2"
+    },
+    "friends-of-behat/service-container-extension": {
+        "version": "v1.0.0"
+    },
+    "friends-of-behat/symfony-extension": {
+        "version": "v1.0.0"
+    },
+    "friends-of-behat/variadic-extension": {
+        "version": "v1.0.0"
+    },
+    "guzzlehttp/guzzle": {
+        "version": "6.3.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.4.2"
+    },
+    "instaclick/php-webdriver": {
+        "version": "1.4.5"
+    },
     "paragonie/random_compat": {
         "version": "v2.0.11"
     },
@@ -8,11 +74,17 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.0.2"
     },
     "psr/simple-cache": {
         "version": "1.0.0"
+    },
+    "symfony/browser-kit": {
+        "version": "v3.4.3"
     },
     "symfony/cache": {
         "version": "v3.4.3"
@@ -32,10 +104,16 @@
             "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
         }
     },
+    "symfony/css-selector": {
+        "version": "v3.4.3"
+    },
     "symfony/debug": {
         "version": "v3.4.3"
     },
     "symfony/dependency-injection": {
+        "version": "v3.4.3"
+    },
+    "symfony/dom-crawler": {
         "version": "v3.4.3"
     },
     "symfony/dotenv": {
@@ -95,7 +173,31 @@
             "ref": "a249484db698d1a847a30291c8f732414ac47e25"
         }
     },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6bcd6c570c017ea6ae5a7a6a027c929fd3542cd8"
+        }
+    },
+    "symfony/twig-bridge": {
+        "version": "v3.4.3"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
+        }
+    },
     "symfony/yaml": {
         "version": "v3.4.3"
+    },
+    "twig/twig": {
+        "version": "v2.4.4"
     }
 }
