@@ -1,0 +1,29 @@
+---
+- name: create mysql database
+  mysql_db: name={{mysql.db}} state=present
+  tags:
+  - mysql
+  - mysql-db
+
+- name: create db user
+  mysql_user:
+    name={{mysql.user}}
+    password={{mysql.password}}
+    priv={{mysql.privileges}}
+    host={{mysql.host}}
+    state=present
+  tags:
+  - mysql
+  - mysql-user
+
+- name: bind mysql remote address
+  ini_file: dest=/etc/my.cnf
+            section=mysqld
+            option=bind-address
+            value={{item}}
+  with_items: mysql.bind
+  tags:
+  - mysql
+  - mysql-configure
+  notify:
+  - restart mysql

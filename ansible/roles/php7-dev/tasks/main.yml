@@ -1,0 +1,29 @@
+---
+- name: Install Pear
+  become: yes
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - "php7.1-dev"
+    - "php-pear"
+
+- name: Update pear
+  shell: pecl channel-update pecl.php.net
+
+- name: Install pear extensions
+  shell: "yes | pecl install {{ item }}"
+  register: pecl_result
+  changed_when: "pecl_result.rc == 0"
+  failed_when: "not (('already installed' in pecl_result.stdout) or ('install ok:' in pecl_result.stdout))"
+  with_items:
+    - "timecop-beta"
+
+- name: Copy timecop ini into main extension config folder.
+  template:
+    src: timecop.ini.j2
+    dest: "{{ item }}/20-timecop.ini"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+      - "/etc/php/7.1/fpm/conf.d"
+      - "/etc/php/7.1/cli/conf.d"

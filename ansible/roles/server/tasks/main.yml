@@ -1,0 +1,18 @@
+- name: update repositories cache
+  apt:
+    update_cache: yes
+
+- name: set timezone to Europe/Madrid
+  timezone:
+    name: "{{ server_timezone }}"
+
+- name: Install basic packages
+  apt: name={{item}} state=latest
+  with_items:
+    - git
+    - python-mysqldb
+    - jpegoptim
+    - acl
+    - sendmail
+    - ca-certificates
+    - libcurl4-openssl-dev

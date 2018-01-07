@@ -1,0 +1,11 @@
+www_domain: symfony.dev
+www_app_root: /var/www/symfony
+www_document_root: /var/www/symfony/public
+www_user: vagrant
+www_group: vagrant
+php_fcgi_port: 9000
+php_display_errors: On
+php_display_startup_errors: On
+php_error_reporting: E_ALL & ~E_DEPRECATED & ~E_STRICT
+php_request_slowlog_time: 30s
+server_timezone: Europe/Madrid

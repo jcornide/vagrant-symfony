@@ -1,0 +1,21 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+  - { role: server, tags: ['server'] }
+  - { role: mysql, tags: ['database'] }
+  - { role: php7, tags: ['webserver'] }
+  - { role: composer, tags: ['webserver'] }
+  - { role: nginx, tags: ['webserver'] }
+  - { role: project-folders, tags: ['webserver'] }
+
+- hosts: development
+  sudo: yes
+  roles:
+  - { role: fakessl, tags: ['development'] }
+  - { role: nginx-dev, tags: ['webserver'] }
+  - { role: php7-dev, tags: ['webserver'] }
+  - { role: xdebug, tags: ['development'] }
+  - { role: mysql-dev, tags: ['development'] }
+  - { role: daemonize, tags: ['development'] }
+  - { role: mailhog, tags: ['development'] }

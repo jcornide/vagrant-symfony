@@ -1,0 +1,13 @@
+- name: Install xDebug
+  apt: name=php-xdebug
+
+- name: Copy xdebug ini into main extension config folder.
+  template:
+    src: xdebug.ini.j2
+    dest: "{{ item }}/{{ php_xdebug_config_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+      - "/etc/php/7.1/fpm/conf.d"
+      - "/etc/php/7.1/cli/conf.d"

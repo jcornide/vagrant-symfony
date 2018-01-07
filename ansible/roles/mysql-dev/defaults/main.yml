@@ -1,0 +1,8 @@
+mysql:
+  db: sellbytel
+  user: sellbytel
+  password: sellbytel
+  privileges: '*.*:ALL'
+  host: '%'
+  bind:
+    - 0.0.0.0

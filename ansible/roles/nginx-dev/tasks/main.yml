@@ -1,0 +1,5 @@
+- name: Enable app_dev.php
+  lineinfile: dest=/etc/nginx/sites-available/default
+              regexp='location \~ \^\/index'
+              line='location ~ ^/(index|index_dev)\.php(/|$) {'
+  notify: restart nginx

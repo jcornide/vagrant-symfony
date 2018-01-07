@@ -1,0 +1,21 @@
+---
+- name: Create case files folder
+  command: mkdir -p /var/www/case_files/
+
+- name: Change case file folder permissions
+  command: chmod 777 /var/www/case_files/
+
+- name: Create email files folder
+  command: mkdir -p /var/www/received_email_files/
+
+- name: Change email files folder permissions
+  command: chmod 777 /var/www/received_email_files/
+
+- name: Create Symfony cache folder
+  command: mkdir -p /tmp/symfony/
+
+- name: Change Symfony cache folder permissions
+  command: chmod -R 777 /tmp/symfony/
+
+- name: Create document root folder
+  command: mkdir -p /var/www/sellbytel

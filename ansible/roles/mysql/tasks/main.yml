@@ -1,0 +1,32 @@
+---
+- name: Install MySQL Server
+  apt: name=mysql-server={{mysql_version}}
+
+- name: Configure Mysql
+  template: src=mysqld.conf.j2 dest=/etc/mysql/my.cnf
+
+- name: install python mysql bindings
+  apt: name=python-mysqldb state=installed
+  become: yes
+  become_method: sudo
+
+- name: Run MySQL
+  service: name=mysql state=started enabled=yes
+  tags:
+  - mysql
+  - mysql-service
+
+- name: Bind mysql remote address
+  ini_file: dest=/etc/my.cnf
+            section=mysqld
+            option=bind-address
+            value={{item}}
+  with_items: mysql.bind
+  tags:
+  - mysql
+  - mysql-configure
+  notify:
+  - restart mysql
+
+
+
