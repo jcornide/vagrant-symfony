@@ -6,13 +6,15 @@ Vagrant.configure(2) do |config|
 
   config.vm.hostname = "vagrant-symonfy"
 
+  provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
+
   config.vm.synced_folder ".", "/var/www/symfony", id: "v-root", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs", nfs_udp: false
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
-  config.vm.provision :ansible do |ansible|
+  config.vm.provision provisioner do |ansible|
     ansible.playbook = "ansible/playbook.yml"
     ansible.verbose = 'vvv'
     ansible.inventory_path = "ansible/hosts"
