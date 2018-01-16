@@ -1,7 +1,7 @@
 mysql:
   db: symfony
   user: symfony
-  password: symfony
+  password: symfony 
   privileges: '*.*:ALL'
   host: '%'
   bind:
