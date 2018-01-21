@@ -1,16 +1,7 @@
 server {
-   listen       80;
-   server_name {{www_domain}};
-   return 301 https://{{www_domain}}$request_uri;
-}
-
-server {
-    listen 443 ssl;
+    listen 80;
     server_name {{www_domain}};
     root   {{www_document_root}};
-
-    ssl_certificate /etc/nginx/ssl/ssl_certificate.crt;
-    ssl_certificate_key /etc/nginx/ssl/ssl_certificate.key;
 
     client_max_body_size 50M;
 
@@ -19,21 +10,6 @@ server {
 
     # strip index.php/ prefix if it is present
     rewrite ^/index\.php/?(.*)$ /$1 permanent;
-
-    ## Static files are served directly.
-    location \/images\/(.*)$ {
-        expires max;
-        log_not_found off;
-        access_log off;
-        ## No need to bleed constant updates. Send the all shebang in one
-        ## fell swoop.
-        tcp_nodelay off;
-        ## Set the OS file cache.
-        open_file_cache max=1000 inactive=120s;
-        open_file_cache_valid 45s;
-        open_file_cache_min_uses 2;
-        open_file_cache_errors off;
-    }
 
     location / {
         index index.php;
@@ -49,7 +25,6 @@ server {
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;
         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param  HTTPS on;
         fastcgi_intercept_errors on;
     }
 }

@@ -13,6 +13,10 @@
   template: src=vhost.conf.j2 dest=/etc/nginx/sites-available/default
   notify: restart nginx
 
+- name: Add site virtual host 2
+  template: src=noframework.conf.j2 dest=/etc/nginx/sites-available/noframework
+  notify: restart nginx
+
 - name: NGINX | Starting NGINX
   service:
     name: nginx
