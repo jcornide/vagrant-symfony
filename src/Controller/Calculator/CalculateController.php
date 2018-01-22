@@ -12,7 +12,7 @@ class CalculateController extends Controller
     {
         $form = $this->createForm(Calculator::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $result = $form->get('number1')->getData() + $form->get('number2')->getData();
             return $this->render(
                 'Calculator/result.html.twig',
