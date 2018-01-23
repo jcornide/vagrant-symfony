@@ -1,6 +1,11 @@
 <?php
 
+use App\Entity\Car;
 use Behat\Behat\Context\Context;
+use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -22,10 +27,18 @@ class FeatureContext implements Context
      * @var Response|null
      */
     private $response;
+    private $em;
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
 
-    public function __construct(KernelInterface $kernel)
-    {
+    public function __construct(
+        KernelInterface $kernel,
+        EntityManager $entityManager
+    ) {
         $this->kernel = $kernel;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -45,4 +58,34 @@ class FeatureContext implements Context
             throw new \RuntimeException('No response received');
         }
     }
+
+
+    /**
+     * @param TableNode $cars
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @Given /^there are the following cars in the database:$/
+     */
+    public function thereAreTheFollowingCars(TableNode $cars)
+    {
+        foreach ($cars->getHash() as $car) {
+            $newCar = new Car();
+            $newCar->setLicensePlate($car['License plate']);
+            $this->entityManager->persist($newCar);
+        }
+        $this->entityManager->flush();
+
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function clearData()
+    {
+        $purger = new ORMPurger($this->kernel->getContainer()->get('doctrine')->getManager());
+        $purger->purge();
+    }
+
+
 }
