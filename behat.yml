@@ -4,7 +4,9 @@ default:
             contexts:
                 - FeatureContext:
                     kernel: '@kernel'
+                    entityManager: "@doctrine.orm.entity_manager"
                 - Behat\MinkExtension\Context\MinkContext
+
 
     extensions:
         Behat\MinkExtension:

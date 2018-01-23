@@ -18,17 +18,11 @@ class Calculator extends AbstractType
                 'number1', NumberType::class, [
                 'label' => 'Number 1',
                 'required' => true,
-                'constraints' => [
-                    new Type(['type' => 'int'])
-                ]
             ])
             ->add(
                 'number2', NumberType::class, [
                 'label' => 'Number 2',
                 'required' => true,
-                'constraints' => [
-                    new Type(['type' => 'int'])
-                ]
             ])
             ->add(
                 'sum', SubmitType::class, [

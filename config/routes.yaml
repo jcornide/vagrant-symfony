@@ -1,11 +1,11 @@
 symfony_training.hello_world:
     path: /hello-world
-    controller: App\Controller\HelloWorldController::greet
+    controller: App\Controller\HelloWorldController::salute
 
 symfony_training.calculator.show_form:
     path: /calculator
     methods: [GET]
-    controller: App\Controller\Calculator\ShowFormController::showForm
+    controller: App\Controller\Calculator\ShowForm2Controller::showForm
 
 symfony_training.calculator.calculate:
     path: /calculator
